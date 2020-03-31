@@ -1,0 +1,93 @@
+select.style-select {
+	border: 1px solid #d6d6d6;
+    outline: none;
+    border-radius: 3px;
+    background-color: #f5f5f5;
+    padding: 0 15px;
+    color: #252525;
+    font-size: 14px;
+    font-weight: 700;
+    height: 42px;
+    cursor: pointer;
+
+	background-image: url(#{$imagedir}style-select.png);
+	background-position: 94% center;
+	background-repeat: no-repeat;
+
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	text-indent: 0.01px;
+	text-overflow: '';
+	appearance: none!important;
+	outline: none;
+
+	&::-ms-expand { display: none; }
+    &:hover {
+        background-color: #fff;
+    }
+    > option {
+        padding: 5px 10px;
+    }
+}
+
+//checkbox-button (design finZdor)
+.checkbox {
+    & + label {
+        cursor: pointer;
+        padding-left: 45px;
+        line-height: 1.4;
+        font-size: 14px;
+        font-weight: 600;
+        color: #222;
+        min-height: 25px;
+        display: flex;
+        align-items: center;
+        @include unSelect;
+        @include mobile {
+            font-size: 12px;
+        }
+    }
+    &:not(checked) {
+        position: absolute;
+        opacity: 0;
+        & + label {
+            position: relative;
+        }
+        & + label:before {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-radius: 3px;
+            top: 0;
+            left: 0;
+            border: 1px solid #d6d6d6;
+        }
+        & + label:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 25px;
+            height: 25px;
+            border: 1px solid #d6d6d6;
+            background-color: #f5f5f5;
+        }
+    }
+    &:checked  {
+        & + label:after {
+            background-image: url(#{$imagedir}checkbox.png);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-color: #fff;
+        }
+    }
+    &:disabled {
+       & + label:after {
+          border: 1px solid #d6d6d6;
+          opacity: 0.5;
+          cursor: default;
+       }
+   }
+}
